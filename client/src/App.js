@@ -2,9 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
-function App() {
+const App = () => {
 
+  // Example calls
   axios.get('/api/items/search=Apple%20Ipod')
+    .then(res => console.log(res.data))
+    .catch(error => console.log(error));
+
+  axios.get('/api/items/MLA916188006')
     .then(res => console.log(res.data))
     .catch(error => console.log(error));
 
