@@ -12,7 +12,12 @@ const authorData = {
   lastname: 'Nieva'
 };
 
-/* TO-DO: Modularize both requests. Perhaps create a service folder */
+/*  
+  TO-DO:
+    Modularize both requests. Perhaps create a service folder
+    Add error handling
+*/
+
 // Handle search requests
 app.get('/api/items/search=:query', (req, res) => {
   const query = req.params.query;

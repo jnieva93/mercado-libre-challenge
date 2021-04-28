@@ -1,35 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import ProductDetails from './pages/ProductDetails';
+import Results from './pages/Results';
+import SearchBox from './pages/SearchBox';
+
 import './App.css';
-import axios from 'axios';
 
 const App = () => {
-
-  // Example calls
-  axios.get('/api/items/search=Apple%20Ipod')
-    .then(res => console.log(res.data))
-    .catch(error => console.log(error));
-
-  axios.get('/api/items/MLA916188006')
-    .then(res => console.log(res.data))
-    .catch(error => console.log(error));
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/items/:idProd' component={ProductDetails} />
+        <Route exact path='/items' component={Results} />
+        <Route path='/' component={SearchBox} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
