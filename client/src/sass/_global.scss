@@ -1,3 +1,4 @@
+@import './mixins';
 @import './variables';
 
 body {
@@ -8,6 +9,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  margin: 0 auto;
+
+  @include small {
+    width: 80%;
+  }
 }
 
 code {

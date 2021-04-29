@@ -1,16 +1,13 @@
+@import '../../sass/mixins';
 @import '../../sass/variables';
 
 $common-height: 36px;
 
-/*
-  TO-DO:
-    @mixin y @media
-*/
 .nav-container {
   background-color: $meli-yellow;
   position: relative;
   width: 100%;
-  height: 6vh;
+  height: 50px;
   text-align: center;
 }
 
@@ -25,6 +22,13 @@ $common-height: 36px;
 
 .meli-logo {
   margin: auto 0;
+  height: $common-height * .8;
+  width: 53px * .8;
+
+  @include small {
+    height: $common-height;
+    width: 53px;
+  }
 }
 
 .text-input {
@@ -34,14 +38,18 @@ $common-height: 36px;
   margin-left: 2%;
   border: none;
   border-radius: $border-radius 0 0 $border-radius;
-  font-size: 18px;
+  font-size: 14px;
   color: $meli-font-color;
   text-indent: 10px;
+
+  @include small {
+    font-size: 18px;
+  }
 }
 
 .search-button {
   height: $common-height;
-  width: 36px;
+  width: $common-height;
   border: none;
   border-radius: 0 $border-radius $border-radius 0;
 }

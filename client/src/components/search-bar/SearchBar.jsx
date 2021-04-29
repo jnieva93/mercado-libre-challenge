@@ -1,5 +1,5 @@
 import React from 'react';
-import meLiLogo from '../../assets/Logo_ML.png';
+import meLiLogo from '../../assets/Logo_ML@2x.png.png.png';
 import searchIcon from '../../assets/ic_Search.png';
 import './search-bar.styles.scss';
 
