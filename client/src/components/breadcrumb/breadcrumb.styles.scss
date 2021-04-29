@@ -1,0 +1,25 @@
+@import '../../sass/variables';
+
+.breadcrumb {
+  list-style: none;
+  padding: $sm-spacing 0;
+  margin: 0;
+  color: $meli-font-grey;
+  font-size: 14px;
+
+  li {
+    display: inline;
+
+    &:last-child {
+      color: $meli-font-grey-hl;
+      font-weight: 500;
+    }
+  }
+
+  li+li:before {
+    padding: 8px;
+    content: '>';
+    font-weight: normal;
+    color: $meli-font-grey;
+  }
+}

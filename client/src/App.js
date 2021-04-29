@@ -9,7 +9,9 @@ import SearchBar from './components/search-bar/SearchBar';
 const App = () => {
   return (
     <BrowserRouter>
-      <SearchBar />
+      <header>
+        <SearchBar />
+      </header>
 
       <main>
         <Switch>
