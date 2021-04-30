@@ -15,7 +15,7 @@ const authorData = {
 /*  
   TO-DO:
     Modularize both requests. Perhaps create a service folder
-    Add error handling
+    Create error handling function
 */
 
 // Handle search requests
@@ -39,7 +39,6 @@ app.get('/api/items/search=:query', (req, res) => {
           id: result.id,
           title: result.title,
           price: {
-            // ASK FOR DECIMALS AND AMOUNT
             currency: result.currency_id,
             amount: Math.trunc(result.price),
             decimals: Math.trunc(result.price % 1 * 100)
@@ -54,7 +53,7 @@ app.get('/api/items/search=:query', (req, res) => {
 
       res.json(searchData);
     })
-    .catch(error => console.log(error));
+    .catch(error => res.status(error.response.status).send({ error: error.response.data }));
 });
 
 // Handle item data requests
@@ -69,28 +68,42 @@ app.get('/api/items/:itemId', (req, res) => {
     .then(responses => {
       const itemResp = responses[0].data;
       const descResp = responses[1].data;
+      const categoryId = itemResp.category_id;
 
-      const itemData = {
-        author: authorData,
-        item: {
-          id: itemResp.id,
-          title: itemResp.title,
-          price: {
-            currency: itemResp.currency_id,
-            amount: Math.trunc(itemResp.price),
-            decimals: Math.trunc(itemResp.price % 1 * 100)
-          },
-          picture: itemResp.thumbnail,
-          condition: itemResp.condition,
-          free_shipping: itemResp.shipping.free_shipping,
-          sold_quantity: itemResp.sold_quantity,
-          description: descResp.plain_text
-        }
-      };
+      axios.get(`${apiMeLi}/categories/${categoryId}`)
+        .then(categoryResponse => {
+          const categoryArray = categoryResponse.data.path_from_root;
+          let formattedCateg = [];
 
-      res.json(itemData);
+          if (categoryArray.length) {
+            formattedCateg = categoryArray.map(category => category.name);
+          }
+
+          const itemData = {
+            author: authorData,
+            item: {
+              id: itemResp.id,
+              title: itemResp.title,
+              price: {
+                currency: itemResp.currency_id,
+                amount: Math.trunc(itemResp.price),
+                decimals: Math.trunc(itemResp.price % 1 * 100)
+              },
+              picture: itemResp.thumbnail,
+              condition: itemResp.condition,
+              free_shipping: itemResp.shipping.free_shipping,
+              sold_quantity: itemResp.sold_quantity,
+              description: descResp.plain_text,
+              categories: formattedCateg
+            }
+          };
+    
+          res.json(itemData);
+        })
+        .catch(error => res.status(error.response.status).send({ error: error.response.data }));
+
     })
-    .catch(error => console.log(error));
+    .catch(error => res.status(error.response.status).send({ error: error.response.data }));
 });
 
 app.listen(PORT, () => {

@@ -20,7 +20,7 @@ const Results = () => {
 
           setProductsData(res.data);
         })
-        .catch(error => console.log(error));
+        .catch(error => console.log(error.response));
     }
   }, [query]);
 

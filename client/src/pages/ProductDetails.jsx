@@ -9,7 +9,8 @@ const ProductDetails = () => {
 
   axios.get(`/api/items/${idProd}`)
     .then(res => console.log(res.data))
-    .catch(error => console.log(error));
+    // Perhaps, I could add a popup that redirects to Home Page when clicking accept
+    .catch(error => console.log(error.response));
 
   return (
     <h1>Product Details</h1>
