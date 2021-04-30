@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Redirect, useLocation } from 'react-router-dom';
 import Breadcrumb from '../components/breadcrumb/Breadcrumb';
+import ContentContainer from '../components/content-container/ContentContainer';
+import ResultCard from '../components/result-card/ResultCard';
 
 const Results = () => {
   const location = useLocation();
 
-  const [productData, setProductData] = useState({});
+  const [productsData, setProductsData] = useState({});
 
   const query = location.search.split('=')[1];
   
@@ -16,7 +18,7 @@ const Results = () => {
         .then(res => {
           console.log(res.data);
 
-          setProductData(res.data);
+          setProductsData(res.data);
         })
         .catch(error => console.log(error));
     }
@@ -27,8 +29,15 @@ const Results = () => {
 
   return (
     <>
-      <Breadcrumb categoriesList={productData.categories} />
-      <h1>Results</h1>
+      <Breadcrumb categoriesList={productsData.categories} />
+
+      {Object.keys(productsData).length !== 0 &&
+        <ContentContainer text='Resultados'>
+          {productsData.items.map(item => (
+            <ResultCard key={item.id} item={item} />
+          ))}
+        </ContentContainer>
+      }
     </>
   );
 }

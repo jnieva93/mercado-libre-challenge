@@ -1,0 +1,97 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+$sm-font-size: 12px;
+$md-font-size: 18px;
+$lg-font-size: 24px;
+
+.result-card-container {
+  width: 100%;
+  background-color: #fff;
+  padding: $xs-spacing 0;
+  display: flex;
+
+  &:first-child {
+    padding-top: 0px;
+  }
+
+  &:last-child {
+    padding-bottom: 0px;
+  }
+
+  .result-image-container {
+    height: 90px;
+    width: 90px;
+    padding-right: $sm-spacing;
+    text-align: center;
+
+    @include small {
+      height: 180px;
+      width: 180px;
+    }
+  }
+
+  .result-card-image {
+    max-height: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-radius: $border-radius;
+  }
+
+  .result-details-container {
+    display: inline;
+    width: 60%;
+
+    @include small {
+      max-width: 50%;
+    }
+  }
+
+  .result-price {
+    font-size: $md-font-size;
+    display: block;
+    padding-bottom: 8 px;
+
+    @include small {
+      font-size: $lg-font-size;
+      padding-top: $sm-spacing;
+      padding-bottom: $lg-spacing;
+    }
+  }
+
+  .result-title {
+    font-size: $sm-font-size;
+
+    @include small {
+      font-size: $md-font-size;
+    }
+  }
+
+  .shipping-icon {
+    padding-left: 10px;
+  }
+
+  .result-location-container {
+    flex-grow: 1;
+    text-align: right;
+    padding: $lg-spacing ($lg-spacing * 2) 0 0;
+    font-size: $sm-font-size;
+    color: $meli-font-grey-hl;
+    display: none;
+
+    @include small {
+      display: block;
+    }
+  }
+
+}
+
+.divider {
+  border-top: 0px solid $background-color;
+  margin: 0;
+  color: $background-color;
+
+  &:last-child {
+    display: none;
+  }
+}

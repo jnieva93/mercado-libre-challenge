@@ -46,7 +46,9 @@ app.get('/api/items/search=:query', (req, res) => {
           },
           picture: result.thumbnail,
           condition: result.condition,
-          free_shipping: result.shipping.free_shipping
+          free_shipping: result.shipping.free_shipping,
+          // Is needed for the result page
+          location: result.address.state_name
         }))
       };
 
