@@ -1,6 +1,6 @@
 import React from 'react';
 import shippingIcon from '../../assets/ic_shipping.png';
-import { addThousandsPoint, formatCurrency } from '../../utils/formattingFunctions';
+import { addThousandsPoint, formatCurrency, formatDecimal } from '../../utils/formattingFunctions';
 import './result-card.styles.scss';
 
 const ResultCard = ({ item }) => {
@@ -13,7 +13,8 @@ const ResultCard = ({ item }) => {
 
         <div className='result-details-container'>
           <span className='result-price'>
-            {`${formatCurrency(item.price.currency)} ${addThousandsPoint(item.price.decimals)}`}
+            {`${formatCurrency(item.price.currency)} ${addThousandsPoint(item.price.amount)}`}
+            <sup>{formatDecimal(item.price.decimals)}</sup>
             {item.free_shipping &&
               <img src={shippingIcon} alt='Free shipping available' className='shipping-icon' />
             }

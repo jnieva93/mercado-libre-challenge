@@ -41,8 +41,8 @@ app.get('/api/items/search=:query', (req, res) => {
           price: {
             // ASK FOR DECIMALS AND AMOUNT
             currency: result.currency_id,
-            amount: result.price,
-            decimals: result.price
+            amount: Math.trunc(result.price),
+            decimals: Math.trunc(result.price % 1 * 100)
           },
           picture: result.thumbnail,
           condition: result.condition,
@@ -77,8 +77,8 @@ app.get('/api/items/:itemId', (req, res) => {
           title: itemResp.title,
           price: {
             currency: itemResp.currency_id,
-            amount: itemResp.available_quantity,
-            decimals: itemResp.price
+            amount: Math.trunc(itemResp.price),
+            decimals: Math.trunc(itemResp.price % 1 * 100)
           },
           picture: itemResp.thumbnail,
           condition: itemResp.condition,
