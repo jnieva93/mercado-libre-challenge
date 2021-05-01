@@ -2,8 +2,9 @@
 
 .breadcrumb {
   list-style: none;
+  max-width: 1184px;
   padding: $sm-spacing 0;
-  margin: 0;
+  margin: 0 auto;
   color: $meli-font-grey;
   font-size: 14px;
 

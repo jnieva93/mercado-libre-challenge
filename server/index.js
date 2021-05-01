@@ -89,7 +89,8 @@ app.get('/api/items/:itemId', (req, res) => {
                 amount: Math.trunc(itemResp.price),
                 decimals: Math.trunc(itemResp.price % 1 * 100)
               },
-              picture: itemResp.thumbnail,
+              // If a pic with a better resolution exists, use it
+              picture: itemResp.pictures.length ? itemResp.pictures[0].url : itemResp.thumbnail,
               condition: itemResp.condition,
               free_shipping: itemResp.shipping.free_shipping,
               sold_quantity: itemResp.sold_quantity,

@@ -12,11 +12,19 @@ $common-height: 36px;
 
   .input-container {
     display: flex;
-    width: 80%;
     height: 100%;
+    max-width: 80%;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
+
+    @include small {
+      width: 80%;
+    }
+    
+    @include medium {
+      max-width: 1184px;
+    }
   }
 }
 

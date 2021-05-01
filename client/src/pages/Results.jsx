@@ -32,7 +32,7 @@ const Results = () => {
       <Breadcrumb categoriesList={productsData.categories} />
 
       {Object.keys(productsData).length !== 0 &&
-        <ContentContainer text='Resultados'>
+        <ContentContainer>
           {productsData.items.map(item => (
             <ResultCard key={item.id} item={item} />
           ))}
