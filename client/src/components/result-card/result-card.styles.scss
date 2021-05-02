@@ -7,7 +7,6 @@ $lg-font-size: 24px;
 
 .result-card-container {
   width: 100%;
-  //background-color: #fff;
   padding: $xs-spacing 0;
   display: flex;
 
@@ -38,6 +37,7 @@ $lg-font-size: 24px;
     width: 100%;
     object-fit: contain;
     border-radius: $border-radius;
+    cursor: pointer;
   }
 
   .result-details-container {
@@ -67,6 +67,7 @@ $lg-font-size: 24px;
 
   .result-title {
     font-size: $sm-font-size;
+    cursor: pointer;
 
     @include small {
       font-size: $md-font-size;

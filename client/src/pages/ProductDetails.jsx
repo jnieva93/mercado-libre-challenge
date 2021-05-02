@@ -12,14 +12,9 @@ const ProductDetails = () => {
 
   const [productData, setProductData] = useState({});
 
-  console.log(window.innerWidth);
-
   useEffect(() => {
     axios.get(`/api/items/${idProd}`)
-      .then(res => {
-        console.log(res.data);
-        setProductData(res.data.item);
-      })
+      .then(res => setProductData(res.data.item))
       // Perhaps, I could add a popup that redirects to Home Page when clicking accept
       .catch(error => console.log(error.response));
   }, [idProd]);

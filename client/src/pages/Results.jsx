@@ -15,11 +15,7 @@ const Results = () => {
   useEffect(() => {
     if (query.length) {
       axios.get(`/api/items/search=${query}`)
-        .then(res => {
-          console.log(res.data);
-
-          setProductsData(res.data);
-        })
+        .then(res => setProductsData(res.data))
         .catch(error => console.log(error.response));
     }
   }, [query]);

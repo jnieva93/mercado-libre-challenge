@@ -3,9 +3,9 @@ import './content-container.styles.scss';
 
 const ContentContainer = props => {
   return (
-    <div className='content-container'>
+    <section className='content-container'>
       {props.children}
-    </div>
+    </section>
   );
 }
  

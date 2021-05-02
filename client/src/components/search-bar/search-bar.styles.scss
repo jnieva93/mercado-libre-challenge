@@ -32,6 +32,7 @@ $common-height: 36px;
   margin: auto 0;
   height: $common-height * .8;
   width: 53px * .8;
+  cursor: pointer;
 
   @include small {
     height: $common-height;
@@ -60,4 +61,5 @@ $common-height: 36px;
   width: $common-height;
   border: none;
   border-radius: 0 $border-radius $border-radius 0;
+  cursor: pointer;
 }

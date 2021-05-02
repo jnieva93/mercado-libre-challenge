@@ -1,14 +1,28 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import shippingIcon from '../../assets/ic_shipping.png';
 import { addThousandsPoint, formatCurrency, formatDecimal } from '../../utils/formattingFunctions';
 import './result-card.styles.scss';
 
 const ResultCard = ({ item }) => {
+  const history = useHistory();
+
+  const handleKeyPress = event => {
+    if (event.key === 'Enter') goToDetails();
+  };
+
+  const goToDetails = () => history.push(`/items/${item.id}`);
+
   return (
     <>
       <div className='result-card-container'>
         <div className='result-image-container'>
-          <img src={item.picture} alt={item.title} className='result-card-image' />
+          <img
+            src={item.picture}
+            alt={item.title}
+            onClick={goToDetails}
+            className='result-card-image'
+          />
         </div>
 
         <div className='result-details-container'>
@@ -19,7 +33,14 @@ const ResultCard = ({ item }) => {
               <img src={shippingIcon} alt='Free shipping available' className='shipping-icon' />
             }
           </span>
-          <span className='result-title'>{item.title}</span>
+          <span
+            onClick={goToDetails}
+            onKeyPress={handleKeyPress}
+            className='result-title'
+            tabIndex={0}
+          >
+            {item.title}
+          </span>
         </div>
 
         <div className='result-location-container'>

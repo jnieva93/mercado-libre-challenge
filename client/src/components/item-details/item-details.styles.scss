@@ -20,6 +20,7 @@
     @include medium {
       height: 680px;
       width: 680px;
+      min-width: 680px;
     }
   }
 
@@ -38,6 +39,7 @@
       min-width: 200px;
       max-width: 200px;
       margin-left: auto;
+      padding-left: $sm-spacing;
     }
 
     @include medium {
@@ -79,6 +81,11 @@
 
     @include medium {
       font-size: 46px;
+
+      // Smaller font size for bigger numbers
+      &.alt {
+        font-size: 40px;
+      }
     }
 
     sup {

@@ -4,6 +4,7 @@ import MeliButton from '../meli-button/MeliButton';
 import './item-details.styles.scss';
 
 const ItemDetails = ({ item }) => {
+  console.log(item.price.amount.toString().length);
   return (
     <>
       <div className='item-details-container'>
@@ -16,7 +17,7 @@ const ItemDetails = ({ item }) => {
             {`${formatCondition(item.condition)} ${formattedSoldQuantity(item.sold_quantity)}`}
           </span>
           <span className='detail-title'>{item.title}</span>
-          <span className='detail-price'>
+          <span className={`detail-price ${item.price.amount.toString().length > 6 ? 'alt' : ''}`}>
             {`${formatCurrency(item.price.currency)} ${addThousandsPoint(item.price.amount)}`}
             <sup>{formatDecimal(item.price.decimal)}</sup>
           </span>
