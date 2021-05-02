@@ -1,0 +1,24 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.error-container {
+  padding: $lg-spacing;
+  text-align: center;
+
+  .error-title {
+    display: block;
+    font-size: 36px;
+    font-weight: 700;
+    padding-bottom: $sm-spacing;
+  }
+
+  .error-message {
+    display: block;
+    padding-bottom: $lg-spacing;
+  }
+
+  .error-button-container {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}

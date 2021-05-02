@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Breadcrumb from '../components/breadcrumb/Breadcrumb';
 import ContentContainer from '../components/content-container/ContentContainer';
+import ErrorMessage from '../components/error-message/ErrorMessage';
 import ItemDetails from '../components/item-details/ItemDetails';
 
 const ProductDetails = () => {
@@ -10,15 +11,20 @@ const ProductDetails = () => {
   
   const idProd = matchParams.idProd;
 
+  const [error, setError] = useState({});
   const [productData, setProductData] = useState({});
 
   useEffect(() => {
     axios.get(`/api/items/${idProd}`)
       .then(res => setProductData(res.data.item))
-      // Perhaps, I could add a popup that redirects to Home Page when clicking accept
-      .catch(error => console.log(error.response));
+      .catch(error => {
+        console.error(error.response);
+        setError(error.response)
+      });
   }, [idProd]);
 
+  // If we got an error, show it instead of rendering the page
+  if (Object.keys(error).length) return <ErrorMessage error={error} />;
 
   return (
     <>
