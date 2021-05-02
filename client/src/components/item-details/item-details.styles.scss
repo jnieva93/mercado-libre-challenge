@@ -3,7 +3,6 @@
 
 .item-details-container {
   @include small {
-    //width: 100%;
     padding: $sm-spacing;
     display: flex;
   }
@@ -14,15 +13,13 @@
     text-align: center;
 
     @include small {
-      //height: 680px;
       width: 480px;
-      //padding-right: 16px;
+      height: 62vh;
     }
 
     @include medium {
       height: 680px;
       width: 680px;
-      //padding-right: 16px;
     }
   }
 
@@ -38,7 +35,6 @@
   .item-overview-container {
     @include small {
       flex-grow: 1;
-      //width: 40vw;
       min-width: 200px;
       max-width: 200px;
       margin-left: auto;
@@ -52,7 +48,7 @@
   .product-status {
     font-size: 13px;
     display: block;
-    padding-bottom: 16px;
+    padding-bottom: $sm-spacing;
 
     @include medium {
       font-size: 14px;
@@ -62,19 +58,20 @@
   .detail-title {
     font-size: 20px;
     font-weight: 700;
-    padding-bottom: 16px;
+    padding-bottom: $sm-spacing;
     display: block;
 
     @include medium {
       font-size: 24px;
-      padding-bottom: 32px;
+      padding-bottom: $lg-spacing;
     }
   }
 
   .detail-price {
     font-size: 36px;
     font-weight: 700;
-    padding-bottom: 32px;
+    padding-bottom: $lg-spacing;
+    display: block;
 
     @include small {
       font-size: 30px;
@@ -94,6 +91,40 @@
       @include medium {
         font-size: 24px;
       }
+    }
+  }
+
+}
+
+.description-container {
+  padding-top: $lg-spacing;
+
+  @include small {
+    padding: $sm-spacing;
+  }
+  
+  @include medium {
+    width: 680px;
+  }
+
+  .description-title {
+    font-size: 24px;
+    padding-bottom: $lg-spacing;
+    display: block;
+  
+    @include medium {
+      font-size: 28px;
+    }
+  }
+
+  .description-text {
+    white-space: pre-line;
+    color: $meli-font-grey;
+    font-size: 14px;
+    text-align: justify;
+
+    @include medium {
+      font-size: 16px;
     }
   }
 }
