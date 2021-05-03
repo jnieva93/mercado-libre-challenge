@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import meLiLogo from '../../assets/Logo_ML@2x.png.png.png';
 import searchIcon from '../../assets/ic_Search.png';
+import { formatQuery } from '../../utils/formattingFunctions';
 import './search-bar.styles.scss';
 
 const SearchBar = () => {
@@ -20,9 +21,9 @@ const SearchBar = () => {
   const goToHomePage = () => history.push('/');
 
   const handleSearch = () => {
-    if (!searchText) return;
+    if (!searchText.trim()) return;
 
-    history.push(`/items?search=${searchText}`);
+    history.push(`/items?search=${formatQuery(searchText.trim())}`);
   };
 
   return (

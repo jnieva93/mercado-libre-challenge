@@ -1,3 +1,5 @@
+export const formatQuery = query => query.replace(/%|!|\?|\//gi, '');
+
 export const addThousandsPoint = number => number.toLocaleString('ger');
 
 export const formatDecimal = decimal => decimal || '00';

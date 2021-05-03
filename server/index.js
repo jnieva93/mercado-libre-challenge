@@ -19,7 +19,7 @@ const authorData = {
     Create error handling function
 */
 
-// Serve the files for the build React App
+// Serve the files for the built React App
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Handle search requests
