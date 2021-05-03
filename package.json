@@ -4,7 +4,8 @@
   "description": "Challenge realizado para ingresar a Mercado Libre",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "José Adán Nieva",

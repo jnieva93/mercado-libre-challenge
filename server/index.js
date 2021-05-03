@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const path = require('path');
 
 const PORT = process.env.PORT || 3001;
 
@@ -17,6 +18,9 @@ const authorData = {
     Modularize both requests. Perhaps create a service folder
     Create error handling function
 */
+
+// Serve the files for the build React App
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Handle search requests
 app.get('/api/items/search=:query', (req, res) => {
@@ -105,6 +109,11 @@ app.get('/api/items/:itemId', (req, res) => {
 
     })
     .catch(error => res.status(error.response.status).send({ error: error.response.data }));
+});
+
+// All other request not handled before will return the React app
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 app.listen(PORT, () => {
