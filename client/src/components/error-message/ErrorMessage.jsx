@@ -12,7 +12,7 @@ const ErrorMessage = ({ error }) => {
     } else if (error.status === 500) {
       return 'Error interno del Servidor';
     } else {
-      return error.data.error.message;
+      return error.data.error ? error.data.error.message : error.statusText;
     }
   };
 

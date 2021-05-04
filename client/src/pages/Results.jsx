@@ -15,6 +15,9 @@ const Results = () => {
   const [productsData, setProductsData] = useState({});
   
   useEffect(() => {
+    // Allows user to search while showing error
+    setError({});
+    
     if (query.length) {
       axios.get(`/api/items/search=${query}`)
         .then(res => setProductsData(res.data))
