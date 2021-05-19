@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
+import QueryProvider from './context/query/queryProvider';
+
 import ProductDetails from './pages/ProductDetails';
 import Results from './pages/Results';
 import SearchBar from './components/search-bar/SearchBar';
-import QueryState from './context/query/queryState';
 
 const App = () => {
   return (
-    <QueryState>
+    <QueryProvider>
       <BrowserRouter>
         <header>
           <SearchBar />
@@ -21,7 +22,7 @@ const App = () => {
           </Switch>
         </main>
       </BrowserRouter>
-    </QueryState>
+    </QueryProvider>
   );
 }
 

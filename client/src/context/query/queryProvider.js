@@ -3,7 +3,7 @@ import QueryContext from './queryContext';
 import queryReducer from './queryReducer';
 import { SET_QUERY } from '../../types/actionTypes';
 
-const QueryState = props => {
+const QueryProvider = props => {
   const initialState = {
     query: ''
   };
@@ -24,4 +24,4 @@ const QueryState = props => {
   );
 }
  
-export default QueryState;
+export default QueryProvider;
