@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import QueryContext from '../../context/query/queryContext';
 import MeliButton from '../meli-button/MeliButton';
 import './error-message.styles.scss';
 
 const ErrorMessage = ({ error }) => {
+  const queriesContext = useContext(QueryContext);
   const history = useHistory();
+
+  const { setQuery } = queriesContext;
 
   const obtainErrorMessage = () => {
     if (error.status === 404) {
@@ -18,6 +22,7 @@ const ErrorMessage = ({ error }) => {
 
   const goToHomePage = () => {
     history.push('/');
+    setQuery('');
   };
 
   return (
